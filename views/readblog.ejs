@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+    <link rel="stylesheet" href="../css/index.css"> <!-- Add your CSS file here -->
+</head>
+<body>
+    <header>
+        <h1>Blogs</h1>
+    </header>
+
+    <main>
+        <h2>All Posts</h2>
+        <% if (posts.length > 0) { %>
+            <% posts.forEach(post => { %>
+                <article>
+                    <h3><%= post.content %></h3>
+                    <p>By: <%= post.user.username %></p>
+                    <p>Likes: <%= post.likes.length %></p>
+                </article>
+            <% }) %>
+        <% } else { %>
+            <p>No posts available.</p>
+        <% } %>
+    </main>
+
+    <footer>
+        <p></p>
+    </footer>
+</body>
+</html>

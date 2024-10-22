@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="../css/profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>User Profile</h1>
+        <div class="user-info">
+            <h5>edit your post</h5>
+            <form action="/update/<%= post._id %>" method="post">
+              <textarea placeholder="write new content here" name="content"></textarea>
+              <input type="submit" value="Update">
+            </form>
+            <a class="logout-button" href="/logout">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

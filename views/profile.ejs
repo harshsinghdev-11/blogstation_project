@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="../css/profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>User Profile</h1>
+        <div class="user-info">
+            <h1>Welcome, <%= user.email %>!</h1>
+
+            <form action="/post" method="post">
+                <input name="content" placeholder="write blog here">
+                <input type="submit">
+            </form>
+            <a href="/readblog">Read Blogs</a>
+            <a class="logout-button" href="/logout">Logout</a>
+        </div>
+
+        <h2>Your Blogs</h2>
+        <div class="posts">
+            <% if (user.posts.length === 0) { %>
+                <p>No posts available.</p>
+            <% } else { %>
+                <% user.posts.reverse().forEach((post) => { %>
+                    <div class="post">
+                        <p><%= post.content %></p>  
+                        <small><%= post.likes.length %> likes</small>
+                        <a href="/like/<%= post._id %>">
+                            <%= post.likes.indexOf(user._id) === -1 ? "like" : "unlike" %>
+                        </a>
+                        <a href="/edit/<%= post._id %>">Edit</a>
+                    </div>
+                <% }) %>
+            <% } %>
+        </div>
+        
+    </div>
+</body>
+</html>
